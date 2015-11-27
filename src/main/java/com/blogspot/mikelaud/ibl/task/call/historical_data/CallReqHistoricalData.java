@@ -1,5 +1,7 @@
 package com.blogspot.mikelaud.ibl.task.call.historical_data;
 
+import java.util.Collections;
+
 import com.blogspot.mikelaud.ibl.connection.ConnectionContext;
 import com.blogspot.mikelaud.ibl.out.OutEvents;
 import com.blogspot.mikelaud.ibl.out.OutEnd;
@@ -17,6 +19,7 @@ import com.blogspot.mikelaud.ibl.types.IblUseRth;
 import com.blogspot.mikelaud.ibl.types.IblWhatToShow;
 import com.blogspot.mikelaud.ibl.types.common.IblSymbol;
 import com.ib.client.Contract;
+import com.ib.client.TagValue;
 
 /**
  * Call the CallReqHistoricalData call to start receiving
@@ -150,6 +153,7 @@ public class CallReqHistoricalData
 		,	IN.WHAT_TO_SHOW
 		,	IN.USE_RTH
 		,	IN.FORMAT_DATE
+		,	Collections.<TagValue>emptyList()
 		);
 		return null;
 	}
@@ -159,11 +163,11 @@ public class CallReqHistoricalData
 		return String.format
 		(	"%s(\"%s/%s/%s/%s/%s\") { endDateTime=\"%s\" durationStr=\"%s\" barSizeSetting=\"%s\" whatToShow=\"%s\" useRth=%d formatDate=%d }"
 		,	super.toString()
-		,	IblString.nvl(IN.CONTRACT.m_symbol)
-		,	IblString.nvl(IN.CONTRACT.m_secType)
-		,	IblString.nvl(IN.CONTRACT.m_currency)
-		,	IblString.nvl(IN.CONTRACT.m_exchange)
-		,	IblString.nvl(IN.CONTRACT.m_primaryExch)
+		,	IblString.nvl(IN.CONTRACT.symbol())
+		,	IblString.nvl(IN.CONTRACT.secType())
+		,	IblString.nvl(IN.CONTRACT.currency())
+		,	IblString.nvl(IN.CONTRACT.exchange())
+		,	IblString.nvl(IN.CONTRACT.primaryExch())
 		,	IblString.nvl(IN.END_DATE_TIME)
 		,	IblString.nvl(IN.DURATION_STR)
 		,	IblString.nvl(IN.BAR_SIZE_SETTING)
@@ -194,11 +198,11 @@ public class CallReqHistoricalData
 		,	IblUseRth.RTH_DATA
 		,	IblFormatDate.UNIX_TIME_SEC
 		));
-		IN.CONTRACT.m_symbol = aSymbol.getName();
-		IN.CONTRACT.m_secType = aSymbol.getSecurityType().getName();
-		IN.CONTRACT.m_currency = aSymbol.getCurrency().getName();
-		IN.CONTRACT.m_exchange = aSymbol.getExchange().getName();
-		IN.CONTRACT.m_primaryExch = aSymbol.getPrimaryExchange().getName();
+		IN.CONTRACT.symbol(aSymbol.getName());
+		IN.CONTRACT.secType(aSymbol.getSecurityType().getName());
+		IN.CONTRACT.currency(aSymbol.getCurrency().getName());
+		IN.CONTRACT.exchange(aSymbol.getExchange().getName());
+		IN.CONTRACT.primaryExch(aSymbol.getPrimaryExchange().getName());
 	}
 
 }

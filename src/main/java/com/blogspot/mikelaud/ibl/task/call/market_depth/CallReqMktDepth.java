@@ -1,5 +1,7 @@
 package com.blogspot.mikelaud.ibl.task.call.market_depth;
 
+import java.util.ArrayList;
+
 import com.blogspot.mikelaud.ibl.connection.ConnectionContext;
 import com.blogspot.mikelaud.ibl.out.OutStream;
 import com.blogspot.mikelaud.ibl.task.Task;
@@ -8,6 +10,7 @@ import com.blogspot.mikelaud.ibl.task.call.CallTaskEx;
 import com.blogspot.mikelaud.ibl.task.event.market_depth.OnUpdateMktDepth;
 import com.blogspot.mikelaud.ibl.task.event.market_depth.OnUpdateMktDepthL2;
 import com.ib.client.Contract;
+import com.ib.client.TagValue;
 
 /**
  * Call this call to request market depth for a specific contract.
@@ -60,6 +63,7 @@ public class CallReqMktDepth
 		(	getRequestId()
 		,	IN.CONTRACT
 		,	IN.NUM_ROWS
+		,	new ArrayList<TagValue>()
 		);
 		return null;
 	}

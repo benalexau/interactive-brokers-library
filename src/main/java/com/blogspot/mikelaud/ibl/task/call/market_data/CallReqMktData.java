@@ -1,5 +1,6 @@
 package com.blogspot.mikelaud.ibl.task.call.market_data;
 
+import java.util.Collections;
 import java.util.List;
 
 import com.blogspot.mikelaud.ibl.connection.ConnectionContext;
@@ -72,6 +73,7 @@ public class CallReqMktData
 		,	IN.CONTRACT
 		,	IN.GENERIC_TICKLIST
 		,	IN.SNAPSHOT
+		,	Collections.<TagValue>emptyList()
 		);
 		return null;
 	}

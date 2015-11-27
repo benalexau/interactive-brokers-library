@@ -4,7 +4,7 @@ import com.blogspot.mikelaud.ibl.connection.ConnectionContext;
 import com.blogspot.mikelaud.ibl.task.Task;
 import com.blogspot.mikelaud.ibl.task.TaskInnerObject;
 import com.blogspot.mikelaud.ibl.task.event.EventTaskEx;
-import com.ib.client.UnderComp;
+import com.ib.client.DeltaNeutralContract;
 
 /**
  * Upon accepting a Delta-Neutral RFQ(request for quote),
@@ -30,9 +30,9 @@ public class OnDeltaNeutralValidation
 		/**
 		 * Underlying component.
 		 */
-		public final UnderComp UNDER_COMP;
+		public final DeltaNeutralContract UNDER_COMP;
 		
-		public Info(int aReqId, UnderComp aUnderComp) {
+		public Info(int aReqId, DeltaNeutralContract aUnderComp) {
 			REQ_ID = aReqId;
 			UNDER_COMP = aUnderComp;
 		}

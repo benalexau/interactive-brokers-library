@@ -1,5 +1,7 @@
 package com.blogspot.mikelaud.ibl.task.call.market_scanners;
 
+import java.util.ArrayList;
+
 import com.blogspot.mikelaud.ibl.connection.ConnectionContext;
 import com.blogspot.mikelaud.ibl.out.OutEvents;
 import com.blogspot.mikelaud.ibl.out.OutEnd;
@@ -9,6 +11,7 @@ import com.blogspot.mikelaud.ibl.task.call.CallTaskEx;
 import com.blogspot.mikelaud.ibl.task.event.market_scanners.OnScannerData;
 import com.blogspot.mikelaud.ibl.task.event.market_scanners.OnScannerDataEnd;
 import com.ib.client.ScannerSubscription;
+import com.ib.client.TagValue;
 
 /**
  * Call the CallReqScannerSubscription call to start receiving
@@ -51,6 +54,7 @@ public class CallReqScannerSubscription
 		getClientSocket().reqScannerSubscription
 		(	getRequestId()
 		,	IN.SUBSCRIPTION
+		,	new ArrayList<TagValue>()
 		);
 		return null;
 	}

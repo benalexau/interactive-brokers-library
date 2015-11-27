@@ -48,11 +48,11 @@ import com.blogspot.mikelaud.ibl.task.event.real_time_bars.OnRealtimeBar;
 import com.ib.client.CommissionReport;
 import com.ib.client.Contract;
 import com.ib.client.ContractDetails;
+import com.ib.client.DeltaNeutralContract;
 import com.ib.client.EWrapper;
 import com.ib.client.Execution;
 import com.ib.client.Order;
 import com.ib.client.OrderState;
-import com.ib.client.UnderComp;
 
 public class ConnectionEventsHandler implements EWrapper {
 	
@@ -62,6 +62,38 @@ public class ConnectionEventsHandler implements EWrapper {
 		mContext = aContext;
 	}
 
+	//========================================================================
+	// Ignored events added in 9.72.09 (beta), which require documentation
+	//------------------------------------------------------------------------
+	
+	@Override
+	public void verifyMessageAPI(String apiData) {
+	}
+
+	@Override
+	public void verifyCompleted(boolean isSuccessful, String errorText) {
+	}
+
+	@Override
+	public void verifyAndAuthMessageAPI(String apiData, String xyzChallange) {
+	}
+
+	@Override
+	public void verifyAndAuthCompleted(boolean isSuccessful, String errorText) {
+	}
+
+	@Override
+	public void displayGroupList(int reqId, String groups) {
+	}
+
+	@Override
+	public void displayGroupUpdated(int reqId, String contractInfo) {
+	}
+
+	@Override
+	public void connectAck() {
+	}
+	
 	//========================================================================
 	// Connection and Server
 	//------------------------------------------------------------------------
@@ -250,8 +282,8 @@ public class ConnectionEventsHandler implements EWrapper {
 	public void orderStatus
 	(	int aOrderId
 	,	String aStatus
-	,	int aFilled
-	,	int aRemaining
+	,	double aFilled
+	,	double aRemaining
 	,	double aAvgFillPrice
 	,	int aPermId
 	,	int aParentId
@@ -309,9 +341,8 @@ public class ConnectionEventsHandler implements EWrapper {
 		(	aOrderId
 		)));
 	}
-
 	@Override
-	public void deltaNeutralValidation(int aReqId, UnderComp aUnderComp) {
+	public void deltaNeutralValidation(int aReqId, DeltaNeutralContract aUnderComp) {
 		mContext.onEventTask
 		(	new OnDeltaNeutralValidation(mContext
 		,	new OnDeltaNeutralValidation.Info
@@ -344,7 +375,7 @@ public class ConnectionEventsHandler implements EWrapper {
 	@Override
 	public void updatePortfolio
 	(	Contract aContract
-	,	int aPosition
+	,	double aPosition
 	,	double aMarketPrice
 	,	double aMarketValue
 	,	double aAverageCost
@@ -416,7 +447,7 @@ public class ConnectionEventsHandler implements EWrapper {
 	public void position
 	(	String aAccount
 	,	Contract aContract
-	,	int aPos
+	,	double aPos
 	,	double aAvgCost
 	) {
 		mContext.onEventTask

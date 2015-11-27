@@ -64,11 +64,11 @@ public class CallReqContractDetails
 		return String.format
 		(	"%s { contract=\"%s/%s/%s/%s/%s\" }"
 		,	super.toString()
-		,	IblString.nvl(IN.CONTRACT.m_symbol)
-		,	IblString.nvl(IN.CONTRACT.m_secType)
-		,	IblString.nvl(IN.CONTRACT.m_currency)
-		,	IblString.nvl(IN.CONTRACT.m_exchange)
-		,	IblString.nvl(IN.CONTRACT.m_primaryExch)
+		,	IblString.nvl(IN.CONTRACT.symbol())
+		,	IblString.nvl(IN.CONTRACT.secType())
+		,	IblString.nvl(IN.CONTRACT.currency())
+		,	IblString.nvl(IN.CONTRACT.exchange())
+		,	IblString.nvl(IN.CONTRACT.primaryExch())
 		);
 	}
 
@@ -91,11 +91,11 @@ public class CallReqContractDetails
 	,	IblSymbol aSymbol 
 	) {
 		this(aContext, new Contract());
-		IN.CONTRACT.m_symbol = aSymbol.getName();
-		IN.CONTRACT.m_secType = aSymbol.getSecurityType().getName(); 
-		IN.CONTRACT.m_currency = aSymbol.getCurrency().getName();
-		IN.CONTRACT.m_exchange = aSymbol.getExchange().getName();
-		IN.CONTRACT.m_primaryExch = aSymbol.getPrimaryExchange().getName();
+		IN.CONTRACT.symbol(aSymbol.getName());
+		IN.CONTRACT.secType(aSymbol.getSecurityType().getName()); 
+		IN.CONTRACT.currency(aSymbol.getCurrency().getName());
+		IN.CONTRACT.exchange(aSymbol.getExchange().getName());
+		IN.CONTRACT.primaryExch(aSymbol.getPrimaryExchange().getName());
 	}
 
 }

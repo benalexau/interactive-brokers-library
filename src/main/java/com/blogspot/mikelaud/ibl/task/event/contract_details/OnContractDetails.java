@@ -36,8 +36,8 @@ public class OnContractDetails
 		public String getSymbol() {
 			String str = "";
 			if (null != CONTRACT_DETAILS) {
-				if (null != CONTRACT_DETAILS.m_summary) {
-					str = CONTRACT_DETAILS.m_summary.m_symbol;
+				if (null != CONTRACT_DETAILS.contract()) {
+					str = CONTRACT_DETAILS.contract().symbol();
 				}
 			}
 			return IblString.nvl(str);
@@ -46,8 +46,8 @@ public class OnContractDetails
 		public String getSecurityType() {
 			String str = "";
 			if (null != CONTRACT_DETAILS) {
-				if (null != CONTRACT_DETAILS.m_summary) {
-					str = CONTRACT_DETAILS.m_summary.m_secType;
+				if (null != CONTRACT_DETAILS.contract()) {
+					str = CONTRACT_DETAILS.contract().secType().name();
 				}
 			}
 			return IblString.nvl(str);
@@ -56,8 +56,8 @@ public class OnContractDetails
 		public String getCurrency() {
 			String str = "";
 			if (null != CONTRACT_DETAILS) {
-				if (null != CONTRACT_DETAILS.m_summary) {
-					str = CONTRACT_DETAILS.m_summary.m_currency;
+				if (null != CONTRACT_DETAILS.contract()) {
+					str = CONTRACT_DETAILS.contract().currency();
 				}
 			}
 			return IblString.nvl(str);
@@ -66,8 +66,8 @@ public class OnContractDetails
 		public String getExchange() {
 			String str = "";
 			if (null != CONTRACT_DETAILS) {
-				if (null != CONTRACT_DETAILS.m_summary) {
-					str = CONTRACT_DETAILS.m_summary.m_exchange;
+				if (null != CONTRACT_DETAILS.contract()) {
+					str = CONTRACT_DETAILS.contract().exchange();
 				}
 			}
 			return IblString.nvl(str);
@@ -76,8 +76,8 @@ public class OnContractDetails
 		public String getPrimaryExchange() {
 			String str = "";
 			if (null != CONTRACT_DETAILS) {
-				if (null != CONTRACT_DETAILS.m_summary) {
-					str = CONTRACT_DETAILS.m_summary.m_primaryExch;
+				if (null != CONTRACT_DETAILS.contract()) {
+					str = CONTRACT_DETAILS.contract().primaryExch();
 				}
 			}
 			return IblString.nvl(str);
@@ -86,7 +86,7 @@ public class OnContractDetails
 		public String getSector() { // yes: Sector == m_industry
 			String str = "";
 			if (null != CONTRACT_DETAILS) {
-				str = CONTRACT_DETAILS.m_industry;  
+				str = CONTRACT_DETAILS.industry();  
 			}
 			return IblString.nvl(str);
 		}
@@ -94,7 +94,7 @@ public class OnContractDetails
 		public String getIndustry() { // yes: Industry == m_category
 			String str = "";
 			if (null != CONTRACT_DETAILS) {
-				str = CONTRACT_DETAILS.m_category;  
+				str = CONTRACT_DETAILS.category();  
 			}
 			return IblString.nvl(str);
 		}
@@ -102,7 +102,7 @@ public class OnContractDetails
 		public String getCategory() { // yes: Category == m_subcategory
 			String str = "";
 			if (null != CONTRACT_DETAILS) {
-				str = CONTRACT_DETAILS.m_subcategory;  
+				str = CONTRACT_DETAILS.subcategory();  
 			}
 			return IblString.nvl(str);
 		}

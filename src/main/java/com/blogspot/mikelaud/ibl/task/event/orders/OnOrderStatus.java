@@ -63,11 +63,11 @@ public class OnOrderStatus
 		 * see Order Status for Partial Fills:
 		 * https://www.interactivebrokers.com/en/software/api/apiguide/tables/order_status_for_partial_fills.htm
 		 */
-		public final int FILLED;
+		public final double FILLED;
 		/**
 		 * Specifies the number of shares still outstanding.
 		 */
-		public final int REMAINING;
+		public final double REMAINING;
 		/**
 		 * The average price of the shares that have been executed.
 		 * This parameter is valid only if the filled parameter value
@@ -106,8 +106,8 @@ public class OnOrderStatus
 		public Info
 		(	int aOrderId
 		,	String aStatus
-		,	int aFilled
-		,	int aRemaining
+		,	double aFilled
+		,	double aRemaining
 		,	double aAvgFillPrice
 		,	int aPermId
 		,	int aParentId

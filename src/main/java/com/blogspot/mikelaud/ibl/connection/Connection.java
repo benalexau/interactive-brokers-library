@@ -1,6 +1,7 @@
 package com.blogspot.mikelaud.ibl.connection;
 
 import com.ib.client.EClientSocket;
+import com.ib.client.EJavaSignal;
 
 public class Connection {
 	
@@ -15,7 +16,7 @@ public class Connection {
 	public Connection(ConnectionContext aConnectionContext) {
 		mConnectionContext = aConnectionContext;
 		mEventsHandler = new ConnectionEventsHandler(mConnectionContext);
-		mClientSocket = new EClientSocket(mEventsHandler);
+		mClientSocket = new EClientSocket(mEventsHandler, new EJavaSignal());
 	}
 	
 }

@@ -27,7 +27,7 @@ public class OnUpdatePortfolio
 		 * This integer indicates the position on the contract.
 		 * If the position is 0, it means the position has just cleared.
 		 */
-		public final int POSITION;
+		public final double POSITION;
 		/**
 		 * The unit price of the instrument.
 		 */
@@ -63,7 +63,7 @@ public class OnUpdatePortfolio
 		
 		public Info
 		(	Contract aContract
-		,	int aPosition
+		,	double aPosition
 		,	double aMarketPrice
 		,	double aMarketValue
 		,	double aAverageCost

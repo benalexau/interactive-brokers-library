@@ -29,7 +29,7 @@ public class OnPosition
 		/**
 		 * The position.
 		 */
-		public final int POS;
+		public final double POS;
 		/**
 		 * Agv cost.
 		 */
@@ -38,7 +38,7 @@ public class OnPosition
 		public Info
 		(	String aAccount
 		,	Contract aContract
-		,	int aPos
+		,	double aPos
 		,	double aAvgCost
 		) {
 			ACCOUNT = aAccount;

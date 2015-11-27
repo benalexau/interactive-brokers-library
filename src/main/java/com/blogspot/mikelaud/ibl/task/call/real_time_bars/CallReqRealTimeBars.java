@@ -1,5 +1,7 @@
 package com.blogspot.mikelaud.ibl.task.call.real_time_bars;
 
+import java.util.ArrayList;
+
 import com.blogspot.mikelaud.ibl.connection.ConnectionContext;
 import com.blogspot.mikelaud.ibl.out.OutStream;
 import com.blogspot.mikelaud.ibl.task.Task;
@@ -11,6 +13,7 @@ import com.blogspot.mikelaud.ibl.types.IblUseRth;
 import com.blogspot.mikelaud.ibl.types.IblWhatToShow;
 import com.blogspot.mikelaud.ibl.types.common.IblSymbol;
 import com.ib.client.Contract;
+import com.ib.client.TagValue;
 
 /**
  * Call the CallReqRealTimeBars call to start receiving real time bar results
@@ -87,6 +90,7 @@ public class CallReqRealTimeBars
 		,	IN.BAR_SIZE
 		,	IN.WHAT_TO_SHOW
 		,	IN.USE_RTH
+		,	new ArrayList<TagValue>()
 		);
 		return null;
 	}
@@ -117,11 +121,11 @@ public class CallReqRealTimeBars
 		,	IblWhatToShow.TRADES
 		,	IblUseRth.ALL_DATA
 		));
-		IN.CONTRACT.m_symbol = aSymbol.getName();
-		IN.CONTRACT.m_secType = aSymbol.getSecurityType().getName(); 
-		IN.CONTRACT.m_currency = aSymbol.getCurrency().getName();
-		IN.CONTRACT.m_exchange = aSymbol.getExchange().getName();
-		IN.CONTRACT.m_primaryExch = aSymbol.getPrimaryExchange().getName();
+		IN.CONTRACT.symbol(aSymbol.getName());
+		IN.CONTRACT.secType(aSymbol.getSecurityType().getName()); 
+		IN.CONTRACT.currency(aSymbol.getCurrency().getName());
+		IN.CONTRACT.exchange(aSymbol.getExchange().getName());
+		IN.CONTRACT.primaryExch(aSymbol.getPrimaryExchange().getName());
 	}
 
 }
